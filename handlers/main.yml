@@ -7,9 +7,6 @@
 - name: restart opendkim
   service: name=opendkim state=restarted
 
-- name: restart solr
-  service: name=tomcat6 state=restarted
-
 - name: import sql postfix
   shell: psql -h localhost -d {{ mailserver_db_database }} -U {{ mailserver_db_username }} -f /etc/postfix/import.sql --set ON_ERROR_STOP=1
   environment:
@@ -29,5 +26,3 @@
 - name: restart mariadb
   service: name=mariadb state=restarted
 
-- name: restart dspam
-  service: name=dspam state=restarted
